@@ -55,7 +55,7 @@ rgbKineticSlider = new rgbKineticSlider({
   textsDisplay: true, // show title
   textsSubTitleDisplay: true, // show subtitles
   textsTiltEffect: true, // enable text tilt
-  googleFonts: ["Josefin Sans:700", "Poppins:400"], // select google font to use
+  googleFonts: ["Lato:700", "Lato:400"], // select google font to use
   buttonMode: false, // enable button mode for title
   textsRgbEffect: true, // enable text rgb effect
   textsRgbIntensity: 0.03, // set text rgb intensity
