@@ -1,6 +1,6 @@
-(function() {
+(function () {
 
-    window.rgbKineticSlider = function(options) {
+    window.rgbKineticSlider = function (options) {
 
         ///////////////////////////////    
 
@@ -20,32 +20,32 @@
         options.swipe = options.hasOwnProperty('swipe') ? options.swipe : true;
         options.swipeDistance = options.hasOwnProperty('swipeDistance') ? options.swipeDistance : 500;
         options.slideTransitionDuration = options.hasOwnProperty('slideTransitionDuration') ? options.slideTransitionDuration : 1;
-        options.transitionScaleIntensity= options.hasOwnProperty('transitionScaleIntensity') ? options.transitionScaleIntensity : 40;
-        options.transitionScaleAmplitude= options.hasOwnProperty('transitionScaleAmplitude') ? options.transitionScaleAmplitude : 300;
-        options.swipeScaleIntensity= options.hasOwnProperty('swipeScaleIntensity') ? options.swipeScaleIntensity : 0.3;
-        options.transitionSpriteRotation= options.hasOwnProperty('transitionSpriteRotation') ? options.transitionSpriteRotation : 0;
+        options.transitionScaleIntensity = options.hasOwnProperty('transitionScaleIntensity') ? options.transitionScaleIntensity : 40;
+        options.transitionScaleAmplitude = options.hasOwnProperty('transitionScaleAmplitude') ? options.transitionScaleAmplitude : 300;
+        options.swipeScaleIntensity = options.hasOwnProperty('swipeScaleIntensity') ? options.swipeScaleIntensity : 0.3;
+        options.transitionSpriteRotation = options.hasOwnProperty('transitionSpriteRotation') ? options.transitionSpriteRotation : 0;
         options.nav = options.hasOwnProperty('nav') ? options.nav : true;
         options.textsRgbEffect = options.hasOwnProperty('textsRgbEffect') ? options.textsRgbEffect : true;
-        options.imagesRgbEffect = options.hasOwnProperty('imagesRgbEffect') ? options.imagesRgbEffect : false; 
+        options.imagesRgbEffect = options.hasOwnProperty('imagesRgbEffect') ? options.imagesRgbEffect : false;
         options.textsSubTitleDisplay = options.hasOwnProperty('textsSubTitleDisplay') ? options.textsSubTitleDisplay : false;
-        options.textsDisplay = options.hasOwnProperty('textsDisplay') ? options.textsDisplay : false; 
-        options.textsTiltEffect = options.hasOwnProperty('textsTiltEffect') ? options.textsTiltEffect : true; 
+        options.textsDisplay = options.hasOwnProperty('textsDisplay') ? options.textsDisplay : false;
+        options.textsTiltEffect = options.hasOwnProperty('textsTiltEffect') ? options.textsTiltEffect : true;
         options.googleFonts = options.hasOwnProperty('googleFonts') ? options.googleFonts : ['Roboto:400'];
         options.buttonMode = options.hasOwnProperty('buttonMode') ? options.buttonMode : true;
-        options.textTitleColor = options.hasOwnProperty('textTitleColor') ? options.textTitleColor : 'white'; 
+        options.textTitleColor = options.hasOwnProperty('textTitleColor') ? options.textTitleColor : 'white';
         options.textTitleSize = options.hasOwnProperty('textTitleSize') ? options.textTitleSize : 125;
         options.mobileTextTitleSize = options.hasOwnProperty('mobileTextTitleSize') ? options.mobileTextTitleSize : 45;
-        options.textTitleLetterspacing = options.hasOwnProperty('textTitleLetterspacing') ? options.textTitleLetterspacing : 3; 
-        options.textSubTitleColor = options.hasOwnProperty('textSubTitleColor') ? options.textSubTitleColor : 'white'; 
-        options.textSubTitleSize = options.hasOwnProperty('textSubTitleSize') ? options.textSubTitleSize : 21; 
+        options.textTitleLetterspacing = options.hasOwnProperty('textTitleLetterspacing') ? options.textTitleLetterspacing : 3;
+        options.textSubTitleColor = options.hasOwnProperty('textSubTitleColor') ? options.textSubTitleColor : 'white';
+        options.textSubTitleSize = options.hasOwnProperty('textSubTitleSize') ? options.textSubTitleSize : 21;
         options.mobileTextSubTitleSize = options.hasOwnProperty('mobileTextSubTitleSize') ? options.mobileTextSubTitleSize : 14;
-        options.textSubTitleLetterspacing = options.hasOwnProperty('textSubTitleLetterspacing') ? options.textSubTitleLetterspacing : 3; 
-        options.textSubTitleOffsetTop = options.hasOwnProperty('textSubTitleOffsetTop') ? options.textSubTitleOffsetTop : 120; 
-        options.mobileTextSubTitleOffsetTop = options.hasOwnProperty('mobileTextSubTitleOffsetTop') ? options.mobileTextSubTitleOffsetTop : 40; 
+        options.textSubTitleLetterspacing = options.hasOwnProperty('textSubTitleLetterspacing') ? options.textSubTitleLetterspacing : 3;
+        options.textSubTitleOffsetTop = options.hasOwnProperty('textSubTitleOffsetTop') ? options.textSubTitleOffsetTop : 120;
+        options.mobileTextSubTitleOffsetTop = options.hasOwnProperty('mobileTextSubTitleOffsetTop') ? options.mobileTextSubTitleOffsetTop : 40;
         options.textsRgbIntensity = options.hasOwnProperty('textsRgbIntensity') ? options.textsRgbIntensity : 0.09;
-        options.navTextsRgbIntensity = options.hasOwnProperty('navTextsRgbIntensity') ? options.navTextsRgbIntensity : 10; 
+        options.navTextsRgbIntensity = options.hasOwnProperty('navTextsRgbIntensity') ? options.navTextsRgbIntensity : 10;
         options.imagesRgbIntensity = options.hasOwnProperty('imagesRgbIntensity') ? options.imagesRgbIntensity : 0.9;
-        options.navImagesRgbIntensity= options.hasOwnProperty('navImagesRgbIntensity') ? options.navImagesRgbIntensity : 100;
+        options.navImagesRgbIntensity = options.hasOwnProperty('navImagesRgbIntensity') ? options.navImagesRgbIntensity : 100;
 
         ///////////////////////////////    
 
@@ -59,11 +59,11 @@
         // remove pixi message in console
         PIXI.utils.skipHello();
 
-        const renderer = new PIXI.autoDetectRenderer(imgWidth,imgHeight, {
+        const renderer = new PIXI.autoDetectRenderer(imgWidth, imgHeight, {
             transparent: true,
             autoResize: true,
             resolution: devicePixelRatio,
-        }); 
+        });
 
         const canvas = document.getElementById("rgbKineticSlider");
         const stage = new PIXI.Container();
@@ -73,7 +73,7 @@
         const textsSubContainer = new PIXI.Container();
 
         // displacement variables used for slides transition 
-        const dispSprite = new PIXI.Sprite.from(options.backgroundDisplacementSprite );
+        const dispSprite = new PIXI.Sprite.from(options.backgroundDisplacementSprite);
         const dispFilter = new PIXI.filters.DisplacementFilter(dispSprite);
 
         // displacement variables used for cursor moving effect
@@ -83,7 +83,7 @@
         // colors filters
         const splitRgb = new PIXI.filters.RGBSplitFilter;
         const splitRgbImgs = new PIXI.filters.RGBSplitFilter;
-        
+
         // main elements
         let render; // pixi render
         let mainLoopID; // raf
@@ -113,7 +113,7 @@
             kineY = 0;
 
         // include the web-font loader script dynamically
-        (function() {
+        (function () {
             let wf = document.createElement('script');
             wf.src = (document.location.protocol === 'https:' ? 'https' : 'http') +
                 '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
@@ -142,7 +142,7 @@
             mainContainer.interactive = true;
 
             // apply rgbsplit effect on texts
-            if(options.textsRgbEffect == true) {
+            if (options.textsRgbEffect == true) {
 
                 textsContainer.filters = [splitRgb];
                 textsSubContainer.filters = [splitRgb];
@@ -153,22 +153,22 @@
                 splitRgb.blue = [0, 0];
             }
 
-            if(options.cursorTextEffect == true) {
+            if (options.cursorTextEffect == true) {
                 textsContainer.filters = [dispFilter_2, splitRgb];
                 textsSubContainer.filters = [dispFilter_2, splitRgb];
             }
-            
-            // apply rgbsplit effect on imgs
-            if( (options.imagesRgbEffect == true) && (options.cursorImgEffect == true ) ) {
 
-                if(options.cursorImgEffect  == true) {
+            // apply rgbsplit effect on imgs
+            if ((options.imagesRgbEffect == true) && (options.cursorImgEffect == true)) {
+
+                if (options.cursorImgEffect == true) {
                     imagesContainer.filters = [dispFilter_2, splitRgbImgs];
                 }
 
                 else {
                     imagesContainer.filters = [splitRgbImgs];
                 }
-                
+
                 splitRgbImgs.red = [0, 0];
                 splitRgbImgs.green = [0, 0];
                 splitRgbImgs.blue = [0, 0];
@@ -176,7 +176,7 @@
             }
 
             else {
-                if(options.cursorImgEffect  == true) {
+                if (options.cursorImgEffect == true) {
                     imagesContainer.filters = [dispFilter_2];
                 }
             }
@@ -188,7 +188,7 @@
             dispSprite_2.anchor.set(0.5);
             dispFilter_2.scale.x = 0;
             dispFilter_2.scale.y = 0;
-            
+
             // renderer settings
             renderer.view.style.objectFit = 'cover';
             renderer.view.style.width = '100%';
@@ -197,7 +197,7 @@
             renderer.view.style.left = '50%';
             renderer.view.style.webkitTransform = 'translate( -50%, -50% ) scale(1.15)';
             renderer.view.style.transform = 'translate( -50%, -50% ) scale(1.15)';
-            
+
 
             //  Add children to the main container
             mainContainer.addChild(imagesContainer, textsContainer, textsSubContainer, dispSprite_2);
@@ -208,12 +208,12 @@
             // pixi render animation
             render = new PIXI.Ticker();
             render.autoStart = true;
-            render.add(function(delta) {
+            render.add(function (delta) {
                 renderer.render(stage);
             });
         }
 
-        
+
         ///////////////////////////////    
 
         //  Build pixi img elements
@@ -223,7 +223,7 @@
         function build_imgs() {
 
             for (let i = 0; i < options.slideImages.length; i++) {
-                
+
                 // get texture from image
                 texture = new PIXI.Texture.from(options.slideImages[i]);
                 // set sprite from texture
@@ -233,7 +233,7 @@
                 imgSprite.anchor.set(0.5);
                 imgSprite.x = renderer.width / 2;
                 imgSprite.y = renderer.height / 2;
-                
+
                 // hide all imgs
                 TweenMax.set(imgSprite, {
                     alpha: 0
@@ -258,23 +258,23 @@
         let subtitleOffsetTop;
 
         function build_texts() {
-            
+
             // make sure array is not empty
-            if(options.itemsTitles.length > 0) {
+            if (options.itemsTitles.length > 0) {
 
                 // build  titles
-                if( options.textsDisplay == true) {
-                    
+                if (options.textsDisplay == true) {
+
                     // set mobile font size based on window size
-                    if(window.innerWidth < 768) {
-                        titleSize = options.mobileTextTitleSize ;
+                    if (window.innerWidth < 768) {
+                        titleSize = options.mobileTextTitleSize;
                         subtitleSize = options.mobileTextSubTitleSize;
-                        subtitleOffsetTop = options.mobileTextSubTitleOffsetTop; 
+                        subtitleOffsetTop = options.mobileTextSubTitleOffsetTop;
                     }
                     else {
-                        titleSize = options.textTitleSize ;
+                        titleSize = options.textTitleSize;
                         subtitleSize = options.textSubTitleSize;
-                        subtitleOffsetTop = options.textSubTitleOffsetTop; 
+                        subtitleOffsetTop = options.textSubTitleOffsetTop;
                     }
 
                     for (let i = 0; i < options.itemsTitles.length; i++) {
@@ -285,7 +285,7 @@
                         let font_1 = options.googleFonts[0].split(':')[0];
                         let word_wrap;
 
-                        if(window.innerWidth < 768) {
+                        if (window.innerWidth < 768) {
                             word_wrap = window.innerWidth * 1.5;
                         }
 
@@ -299,27 +299,27 @@
                             fontFamily: font_1,
                             fontSize: titleSize,
                             fontWeight: fontWeight_1,
-                            fill:  options.textTitleColor,
+                            fill: options.textTitleColor,
                             align: 'left',
-                            padding : 0, // todo : make it optionnable
+                            padding: 0, // todo : make it optionnable
                             wordWrap: true, // todo : make it optionnable
                             wordWrapWidth: word_wrap, // todo : make it optionnable
                             letterSpacing: options.textTitleLetterspacing,
                         });
-                        
+
                         // texts centering
                         textTitles.anchor.set(0.5);
                         textTitles.x = renderer.width / 2;
                         textTitles.y = renderer.height / 2;
 
                         textsContainer.addChild(textTitles);
-                        
+
                         // hide all titles on init
                         TweenMax.set(textTitles, {
                             alpha: 0
                         });
 
-                        if(options.buttonMode == true) {
+                        if (options.buttonMode == true) {
 
                             textTitles.interactive = true;
                             textTitles.buttonMode = true;
@@ -329,14 +329,35 @@
 
                             function onClick() {
                                 // do something on click
+                                switch (currentIndex) {
+                                    case 0:
+                                        window.location.href = "/pages/house.html"
+                                        break
+                                    case 1:
+                                        window.location.href = "/pages/luxury.html"
+                                        break
+                                    case 2:
+                                        window.location.href = "/pages/tower.html"
+                                        break
+                                    case 3:
+                                        window.location.href = "/pages/residencial.html"
+                                        break
+                                    case 4:
+                                        window.location.href = "/pages/office.html"
+                                        break
+                                    default:
+                                        window.location.href = "/"
+                                        break
+
+                                }
                             }
                         }
                     }
 
                     slideTexts = textsContainer.children;
-                    
+
                     // build subtitles
-                    if( options.textsSubTitleDisplay == true) {
+                    if (options.textsSubTitleDisplay == true) {
 
                         for (let i = 0; i < options.itemsTitles.length; i++) {
                             // get font family value from options array
@@ -348,14 +369,14 @@
                             let fontWeight_2 = options.googleFonts[1].split(":").pop();
                             let word_wrap;
 
-                            if(window.innerWidth < 768) {
+                            if (window.innerWidth < 768) {
                                 word_wrap = renderer.width / 1.5
                             }
 
                             else {
                                 word_wrap = renderer.width / 2
                             }
-                            
+
                             textTitles2 = new PIXI.Text(options.itemsTitles[i][1], {
                                 fontFamily: font_2,
                                 fontSize: subtitleSize,
@@ -366,13 +387,13 @@
                                 wordWrapWidth: word_wrap,
                                 letterSpacing: options.textSubTitleLetterspacing,
                             });
-                            
+
                             // texts centering
                             textTitles2.anchor.set(0.5);
                             textTitles2.x = textTitles.x;
-                             textTitles2.y = textTitles.y + subtitleOffsetTop;
+                            textTitles2.y = textTitles.y + subtitleOffsetTop;
                             textsSubContainer.addChild(textTitles2);
-                            
+
                             // hide all subtitles on init
                             TweenMax.set(textTitles2, {
                                 alpha: 0
@@ -383,7 +404,7 @@
                     }
                 }
             }
-            
+
         }
 
         ///////////////////////////////    
@@ -398,10 +419,10 @@
             dispSprite.anchor.set(0.5);
             dispSprite.x = renderer.view.width / 2;
             dispSprite.y = renderer.view.height / 2;
-            
+
             // set timeline with callbacks
             timelineTransition = new TimelineMax({
-                onStart: function() {
+                onStart: function () {
 
                     // update playing flag
                     is_playing = true;
@@ -411,21 +432,21 @@
                     dispSprite.rotation = 0;
                 },
 
-                onComplete: function() {
-                    
+                onComplete: function () {
+
                     // reset rgb values
-                    if(options.textsRgbEffect == true) {
+                    if (options.textsRgbEffect == true) {
                         splitRgb.red = [0, 0];
                         splitRgb.green = [0, 0];
                         splitRgb.blue = [0, 0];
                     }
 
-                    if(options.imagesRgbEffect == true) {
+                    if (options.imagesRgbEffect == true) {
                         splitRgbImgs.red = [0, 0];
                         splitRgbImgs.green = [0, 0];
                         splitRgbImgs.blue = [0, 0];
                     }
-                    
+
 
                     // update flags
                     is_playing = false;
@@ -439,76 +460,76 @@
                     currentIndex = next;
                 },
 
-                onUpdate: function() {
+                onUpdate: function () {
 
-                    dispSprite.rotation =  options.transitionSpriteRotation; // frequency
-                    dispSprite.scale.set( timelineTransition.progress() * options.transitionScaleIntensity);
+                    dispSprite.rotation = options.transitionSpriteRotation; // frequency
+                    dispSprite.scale.set(timelineTransition.progress() * options.transitionScaleIntensity);
 
-                    if( is_loaded === true) {
-                        
+                    if (is_loaded === true) {
+
                         // rgb shift effect for navigation transition
                         // if text rgb effect is enable
-                        if(options.textsRgbEffect == true) {
+                        if (options.textsRgbEffect == true) {
 
                             // on first half of transition
                             // match splitRgb values with timeline progress / from 0 to x
-                            if(timelineTransition.progress() < 0.5) {
+                            if (timelineTransition.progress() < 0.5) {
                                 splitRgb.red = [timelineTransition.progress() * options.navTextsRgbIntensity, 0];
                                 splitRgb.green = [0, 0];
-                                splitRgb.blue = [(- ( timelineTransition.progress() )), 0];
+                                splitRgb.blue = [(- (timelineTransition.progress())), 0];
                             }
                             // on second half of transition
                             // match splitRgb values with timeline progress / from x to 0
                             else {
                                 splitRgb.red = [-(options.navTextsRgbIntensity - timelineTransition.progress() * options.navTextsRgbIntensity), 0];
                                 splitRgb.green = [0, 0];
-                                splitRgb.blue = [( (options.navTextsRgbIntensity - timelineTransition.progress() * options.navTextsRgbIntensity)), 0];
+                                splitRgb.blue = [((options.navTextsRgbIntensity - timelineTransition.progress() * options.navTextsRgbIntensity)), 0];
                             }
                         }
-                        
+
                         // if img rgb effect is enable
-                        if(options.imagesRgbEffect == true) {
+                        if (options.imagesRgbEffect == true) {
 
                             // on first half of transition
                             // match splitRgb values with timeline progress / from 0 to x
-                            if(timelineTransition.progress() < 0.5) {
+                            if (timelineTransition.progress() < 0.5) {
                                 splitRgbImgs.red = [-timelineTransition.progress() * options.navImagesRgbIntensity, 0];
                                 splitRgbImgs.green = [0, 0];
-                                splitRgbImgs.blue = [ ( timelineTransition.progress() ), 0];
+                                splitRgbImgs.blue = [(timelineTransition.progress()), 0];
                             }
-                            
+
                             // on second half of transition
                             // match splitRgb values with timeline progress / from x to 0
                             else {
                                 splitRgbImgs.red = [-(options.navImagesRgbIntensity - timelineTransition.progress() * options.navImagesRgbIntensity), 0];
                                 splitRgbImgs.green = [0, 0];
-                                splitRgbImgs.blue = [( (options.navImagesRgbIntensity - timelineTransition.progress() * options.navImagesRgbIntensity)), 0];
+                                splitRgbImgs.blue = [((options.navImagesRgbIntensity - timelineTransition.progress() * options.navImagesRgbIntensity)), 0];
 
                             }
                         }
                     }
                 }
             });
-            
+
             // make sure timeline is finish
             timelineTransition.clear();
-            if (timelineTransition.isActive() ) {
+            if (timelineTransition.isActive()) {
                 return;
             }
 
             var scaleAmp;
 
             // prevent first animation transition
-            if( is_loaded === false) {
+            if (is_loaded === false) {
                 scaleAmp = 0;
             }
             // the first transition is done > applly effect
             else {
                 scaleAmp = options.transitionScaleAmplitude;
             }
-            
+
             // if titles and subtitles are active
-            if( (options.textsSubTitleDisplay  == true) && (options.textsDisplay == true) && (options.itemsTitles.length > 0) ) {
+            if ((options.textsSubTitleDisplay == true) && (options.textsDisplay == true) && (options.itemsTitles.length > 0)) {
 
                 timelineTransition
                     .to(dispFilter.scale, options.slideTransitionDuration, {
@@ -517,13 +538,13 @@
                         ease: Power2.easeIn
                     })
                     .to([slideImages[currentIndex], slideTexts[currentIndex], slideTextsSub[currentIndex]], options.slideTransitionDuration, {
-                            alpha: 0,
-                            ease: Power2.easeOut
-                        }, options.slideTransitionDuration * 0.5)
+                        alpha: 0,
+                        ease: Power2.easeOut
+                    }, options.slideTransitionDuration * 0.5)
                     .to([slideImages[next], slideTexts[next], slideTextsSub[next]], options.slideTransitionDuration, {
-                            alpha: 1,
-                            ease: Power2.easeOut
-                        }, options.slideTransitionDuration * 0.5)
+                        alpha: 1,
+                        ease: Power2.easeOut
+                    }, options.slideTransitionDuration * 0.5)
                     .to(dispFilter.scale, options.slideTransitionDuration, {
                         x: 0,
                         y: 0,
@@ -532,7 +553,7 @@
             }
 
             // if subtitles inactive and title active
-            else if( (options.textsSubTitleDisplay  == false) && (options.textsDisplay == true) && (options.itemsTitles.length > 0))  {
+            else if ((options.textsSubTitleDisplay == false) && (options.textsDisplay == true) && (options.itemsTitles.length > 0)) {
 
                 timelineTransition
                     .to(dispFilter.scale, options.slideTransitionDuration, {
@@ -541,35 +562,35 @@
                         ease: Power2.easeIn
                     })
                     .to([slideImages[currentIndex], slideTexts[currentIndex]], options.slideTransitionDuration, {
-                            alpha: 0,
-                            ease: Power2.easeOut
-                        }, options.slideTransitionDuration * 0.5)
+                        alpha: 0,
+                        ease: Power2.easeOut
+                    }, options.slideTransitionDuration * 0.5)
                     .to([slideImages[next], slideTexts[next]], options.slideTransitionDuration, {
-                            alpha: 1,
-                            ease: Power2.easeOut
-                        }, options.slideTransitionDuration * 0.5)
+                        alpha: 1,
+                        ease: Power2.easeOut
+                    }, options.slideTransitionDuration * 0.5)
                     .to(dispFilter.scale, options.slideTransitionDuration, {
                         x: 0,
                         y: 0,
                         ease: Power1.easeOut
                     }, options.slideTransitionDuration);
             }
-            
+
             else {
                 timelineTransition
-                    .to(dispFilter.scale, options.slideTransitionDuration , {
+                    .to(dispFilter.scale, options.slideTransitionDuration, {
                         x: scaleAmp,
                         y: scaleAmp,
                         ease: Power2.easeIn
                     })
-                    .to(slideImages,  options.slideTransitionDuration, {
-                            alpha: 0,
-                            ease: Power2.easeOut
-                        }, options.slideTransitionDuration * 0.5)
+                    .to(slideImages, options.slideTransitionDuration, {
+                        alpha: 0,
+                        ease: Power2.easeOut
+                    }, options.slideTransitionDuration * 0.5)
                     .to([slideImages[next]], options.slideTransitionDuration, {
-                            alpha: 1,
-                            ease: Power2.easeOut
-                        }, options.slideTransitionDuration * 0.5)
+                        alpha: 1,
+                        ease: Power2.easeOut
+                    }, options.slideTransitionDuration * 0.5)
                     .to(dispFilter.scale, options.slideTransitionDuration, {
                         x: 0,
                         y: 0,
@@ -602,12 +623,12 @@
                 posx = e.touches[0].clientX;
                 posy = e.touches[0].clientY;
             }
-            
+
             // enable raf loop
             mainLoop();
         }
 
-        
+
         ///////////////////////////////    
 
         //  Main loop for animations
@@ -615,48 +636,48 @@
         ///////////////////////////////
 
         function mainLoop() {
-            
+
             // enable raf animation
             mainLoopID = requestAnimationFrame(mainLoop);
 
             // if user is out of screen
-             if(posy <= 0 || posx <= 0 || (posx >=  (window.innerWidth - 2 ) || posy >= (window.innerHeight - 2 ))) {
+            if (posy <= 0 || posx <= 0 || (posx >= (window.innerWidth - 2) || posy >= (window.innerHeight - 2))) {
 
                 is_moving = false;
                 // re-init values
                 posx = vx = window.innerWidth / 2;
-                posy = vy = window.innerHeight / 2;             
+                posy = vy = window.innerHeight / 2;
                 kineX = kineY = newkineX = newkineY = 0;
 
             }
 
             else {
-                 is_moving = true;
+                is_moving = true;
             }
 
             // get mouse position with momentum
             vx += ((posx - vx) * options.cursorMomentum);
             vy += ((posy - vy) * options.cursorMomentum);
-    
+
             // update kineX / kineY based on posx / posy and vx / vy
             kineX = Math.floor(posx - vx);
             kineY = Math.floor(posy - vy);
 
             // enable text tilt effect
-            if(options.textsTiltEffect == true) {
-                tilt( currentIndex, kineX, kineY )
+            if (options.textsTiltEffect == true) {
+                tilt(currentIndex, kineX, kineY)
             }
 
             // if flag has changed 
-            if( is_moving === true ) {
+            if (is_moving === true) {
                 // update cursor displacement sprite positions on cursor moving
                 dispSprite_2.x = vx;
-                dispSprite_2.y = vy ;
+                dispSprite_2.y = vy;
 
                 TweenMax.to(dispFilter_2.scale, 0.5, {
-                        x: kineX * options.cursorScaleIntensity,
-                        y: kineY *  options.cursorScaleIntensity,
-                        ease: Power4.easeOut
+                    x: kineX * options.cursorScaleIntensity,
+                    y: kineY * options.cursorScaleIntensity,
+                    ease: Power4.easeOut
                 });
             }
 
@@ -665,10 +686,10 @@
                 dispSprite.x = vx;
                 dispSprite.y = vy;
             }
-     
+
             // if user is swipping 
             if (is_swipping) {
-                
+
                 // update slide displacement sprite positions
                 dispSprite.x = vx;
                 dispSprite.y = vy;
@@ -677,20 +698,20 @@
                 dispFilter.y = vy;
                 // map displacement filter scale value with user swipping intensity
                 dispFilter.scale.x = kineX * (options.swipeScaleIntensity);
-                dispFilter.scale. y = kineY * (options.swipeScaleIntensity);
+                dispFilter.scale.y = kineY * (options.swipeScaleIntensity);
 
                 // if text rgb effect enable
-                if(options.textsRgbEffect == true) {
+                if (options.textsRgbEffect == true) {
                     splitRgb.red = [(kineX * options.textsRgbIntensity), 0];
                     splitRgb.green = [0, 0];
                     splitRgb.blue = [(-kineX * options.textsRgbIntensity), 0];
                 }
                 // if img rgb effect enable
-                if(options.imagesRgbEffect == true) {
+                if (options.imagesRgbEffect == true) {
                     splitRgbImgs.red = [(kineX * options.imagesRgbIntensity), 0];
                     splitRgbImgs.green = [0, 0];
                     splitRgbImgs.blue = [(-kineX * options.imagesRgbIntensity), 0];
-                } 
+                }
             }
         }
 
@@ -702,20 +723,20 @@
 
         function swipe() {
 
-            if(options.swipe == true) {
+            if (options.swipe == true) {
 
                 mainContainer
-                        .on('pointerdown', onDragStart)
-                        .on('pointerup', onDragEnd)
-                        .on('pointermove', onDragMove)
-            
+                    .on('pointerdown', onDragStart)
+                    .on('pointerup', onDragEnd)
+                    .on('pointermove', onDragMove)
+
                 // drag start
                 function onDragStart(event) {
-                    
+
                     if (is_playing) {
                         return;
                     }
-                    
+
                     // get event position as data
                     this.data = event.data;
                     drag_start = this.data.getLocalPosition(this.parent);
@@ -724,35 +745,35 @@
                     is_swipping = true;
 
                     // disable rgbSplit effect
-                    if(options.textsRgbEffect == true) {
+                    if (options.textsRgbEffect == true) {
                         splitRgb.red = [0, 0];
                         splitRgb.green = [0, 0];
                         splitRgb.blue = [0, 0];
                     }
 
-                    if(options.imagesRgbEffect == true) {
+                    if (options.imagesRgbEffect == true) {
                         splitRgbImgs.red = [0, 0];
                         splitRgbImgs.green = [0, 0];
                         splitRgbImgs.blue = [0, 0];
                     }
                 }
-                
+
                 // drag end
                 function onDragEnd() {
-                    
+
                     // make sure slide transition is not playing
                     if (is_playing) {
                         return;
                     }
-                    
+
                     // disable rgbSplit effect
-                    if(options.textsRgbEffect == true) {
+                    if (options.textsRgbEffect == true) {
                         splitRgb.red = [0, 0];
                         splitRgb.green = [0, 0];
                         splitRgb.blue = [0, 0];
                     }
 
-                    if(options.imagesRgbEffect == true) {
+                    if (options.imagesRgbEffect == true) {
                         splitRgbImgs.red = [0, 0];
                         splitRgbImgs.green = [0, 0];
                         splitRgbImgs.blue = [0, 0];
@@ -774,12 +795,12 @@
 
                     // update swiping flag
                     this.data = null;
-                    is_swipping = false; 
+                    is_swipping = false;
                 }
 
                 // drag move > swipe
                 function onDragMove() {
-                    
+
                     // make sure slide transition is completed and user is swipping
                     if (is_playing) {
                         return;
@@ -789,7 +810,7 @@
 
                         // get the new position
                         let newPosition = this.data.getLocalPosition(this.parent);
-                        
+
                         // if user swipe the screen from left to right : next slide
                         if ((drag_start.x - newPosition.x) < - options.swipeDistance) {
                             if (currentIndex >= 0 && currentIndex < options.slideImages.length - 1) {
@@ -798,7 +819,7 @@
                                 slideTransition(0);
                             }
                         }
-                        
+
                         // if user swipe from right to left : prev slide
                         if ((drag_start.x - newPosition.x) > options.swipeDistance) {
                             if (currentIndex > 0 && currentIndex < options.slideImages.length) {
@@ -820,9 +841,9 @@
 
         function tilt(currentIndex, kineX, kineY) {
 
-            if(options.itemsTitles.length > 0) {
+            if (options.itemsTitles.length > 0) {
 
-                if( options.textsDisplay == true) {
+                if (options.textsDisplay == true) {
 
                     TweenMax.to(slideTexts[currentIndex], 2, {
                         x: (renderer.width / 2) - (kineX * 0.1),
@@ -830,7 +851,7 @@
                         ease: Expo.easeOut
                     });
 
-                    if( options.textsSubTitleDisplay == true) {
+                    if (options.textsSubTitleDisplay == true) {
                         TweenMax.to(slideTextsSub[currentIndex], 2, {
                             x: (renderer.width / 2) - (kineX * 0.25),
                             y: (renderer.height / 2 + subtitleOffsetTop) - (kineY * 0.2),
@@ -847,7 +868,7 @@
 
         ///////////////////////////////
 
-        if(options.nav == true) {
+        if (options.nav == true) {
 
             let nav = document.querySelectorAll('.main-nav');
 
@@ -855,7 +876,7 @@
 
                 let navItem = nav[i];
 
-                navItem.onclick = function(event) {
+                navItem.onclick = function (event) {
 
                     // Make sure the previous transition has ended
                     if (is_playing) {
@@ -864,10 +885,10 @@
 
                     const active = document.querySelector('.active');
 
-                    if(active){
+                    if (active) {
                         active.classList.remove('active');
                     }
-                      this.classList.add('active');
+                    this.classList.add('active');
 
                     if (this.getAttribute('data-nav') === 'next') {
                         if (currentIndex >= 0 && currentIndex < options.slideImages.length - 1) {
@@ -894,9 +915,9 @@
         ///////////////////////////////
 
         function init() {
-            
+
             // re init renderer on ready
-            renderer.resize(imgWidth,imgHeight);
+            renderer.resize(imgWidth, imgHeight);
 
             // construct
             build_scene();
@@ -907,12 +928,12 @@
             cursorInteractive();
             swipe();
             slideTransition(currentIndex);
-            
+
             // Listen for window resize events
             window.addEventListener('resize', resizeTexts);
             function resizeTexts() {
                 // build_imgs();
-                if(window.innerWidth < 768) {
+                if (window.innerWidth < 768) {
                     build_texts();
                     renderer.render(stage);
                 }
@@ -921,7 +942,7 @@
                     build_texts();
                     renderer.render(stage);
                 }
-                
+
             }
         };
 
@@ -931,9 +952,9 @@
                 families: options.googleFonts
             },
 
-            active: function() { 
+            active: function () {
                 // load the stage images 
-                imagesLoaded(images, function() {
+                imagesLoaded(images, function () {
                     document.body.classList.remove('loading');
                     // init slider
                     init();
