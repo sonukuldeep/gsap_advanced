@@ -28,7 +28,7 @@ The project requires no special dependency.
 git clone 
 ```
 
-### run
+### Run
 ```text
 run using live server in vs code
 ```
