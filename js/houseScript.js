@@ -9,10 +9,7 @@ const t1 = gsap.timeline({
         pin: true
     }
 })
-t1.to(".para", 2, {
-    y: -150,
-    ease: "none",
-}, "end")
+
 t1.to(".img2", 2, {
     y: 10,
     ease: "none"
@@ -48,3 +45,8 @@ t1.to(".img9", 2, {
     scaleY: 1.2
 }, "start")
 
+
+// t1.to(".para", 2, {
+//     y: -150,
+//     ease: "none",
+// }, "end")
