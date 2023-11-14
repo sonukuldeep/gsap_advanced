@@ -34,13 +34,10 @@ body {
   bottom: 0px;
 }
 .para {
-  width: 100%;
-  height: 100vh;
   background-color: #210002;
+  height: 100vh;
   font-family: "Lato";
   color: #fff;
-  display: grid;
-  place-content: center;
 }
 h1 {
   font-size: 70px;
